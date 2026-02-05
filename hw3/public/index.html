@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<!-- Name: Tony Phan -->
+
+<html>
+
+	<head>
+
+		<!-- Homework 2 -->
+		<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<script>
+
+			// "document" encompasses everything in html
+			$(document).ready(function() {
+			
+				// Handles the "order" button for clicks
+				$("#order").click(function() {
+
+					// Any instances of "vegan" will be recognized, no matter of capitalization
+					const instructions = $("#instructions").val().toLowerCase();
+
+					if(instructions.includes("vegan")) {
+						alert("Warning: Cheesecake contains dairy.");
+						return;
+					}
+
+					// Gets the topping/amount, stores as variables
+					const amount = $("#amount").val();
+					const topping = $("input[name='choice']:checked").val();
+
+					// Replaces form with all post-order information
+					$("form").replaceWith(`
+						<h2>Thank you! Your order has been placed</h2>
+						<p><strong>Quantity: </strong>${amount}</p>
+						<p><strong>Topping: </strong>${topping}</p>
+						<p><strong>Instructions: </strong>${instructions}</p>
+					`);
+
+				});
+
+				// Handles the month click, sets current month to clicked
+				$(".month_select li").click(function() {
+					const month = $(this).text();
+					$(".month_current").text(month);
+				});
+
+
+			});
+
+		</script>
+
+
+		<!-- Title/CSS sheet -->
+		<title>Homework 1</title>
+
+		<link rel="stylesheet" href="stylesheets/phann28.css">
+
+	</head>
+
+	<body>
+
+		<h1>Cheesecake Order Form</h1>
+		
+		<!-- Div allows me to seperate individual sections, and modify it -->
+		<div class="Ordering">
+
+			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Baked_cheesecake_with_raspberries_and_blueberries.jpg/1280px-Baked_cheesecake_with_raspberries_and_blueberries.jpg" width="200" height="200">
+
+			<!-- Since this is meant for user input, it's in a form -->
+			<form>
+
+				<p>Quantity Topping</p>
+
+				<!-- Table allows me to format the positions of the items -->
+
+				<table>
+
+					<tr>
+
+						<td>
+
+							<select id="amount">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
+
+
+						</td>
+
+						<td>
+						
+							<!-- "name" allows for the user to only choose 1 option at a time -->
+
+							<input type="radio" id="plain" name="choice" value="plain">
+							<label for="plain">Plain</label><br>
+
+							<input type="radio" id="cherry" name="choice" value="cherry">
+							<label for="cherry">Cherry</label><br>
+
+							<input type="radio" id="chocolate" name="choice" value="chocolate">
+							<label for="chocolate">Chocolate</label>
+
+						</td>
+
+					</tr>
+
+				</table>
+
+
+				<p>Notes:</p>
+
+				<!-- "placeholder" is temporary text that will go away once user types -->
+
+				<textarea rows="4" cols="40" id="instructions" placeholder="Enter any special instructions here"></textarea> <br>
+
+				<button type="button" id="order">Order</button>
+
+			</form>
+
+		</div>
+
+		<div class="Product">
+
+			<h2>Orders for
+				<span class="month">
+
+					<!-- Assigns the 'default' month -->
+					<span class="month_current">Jan</span>
+
+					<!-- Month selector/unordered -->
+					<ul class="month_select">
+						<li>Jan</li>
+						<li>Feb</li>
+						<li>Mar</li>
+						<li>Apr</li>
+						<li>May</li>
+						<li>Jun</li>
+						<li>Aug</li>
+						<li>Sep</li>
+						<li>Oct</li>
+						<li>Nov</li>
+						<li>Dec</li>
+					</ul>
+				</span>
+			</h2>
+
+			<ul>
+				<li>11 Cherry</li>
+				<li>17 Chocolate</li>
+				<li>31 Plain</li>
+			</ul>
+			
+
+		</div>
+
+
+	</body>
+
+</html>
