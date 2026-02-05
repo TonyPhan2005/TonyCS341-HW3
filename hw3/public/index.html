@@ -10,47 +10,6 @@
 		<script
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-		<script>
-
-			// "document" encompasses everything in html
-			$(document).ready(function() {
-			
-				// Handles the "order" button for clicks
-				$("#order").click(function() {
-
-					// Any instances of "vegan" will be recognized, no matter of capitalization
-					const instructions = $("#instructions").val().toLowerCase();
-
-					if(instructions.includes("vegan")) {
-						alert("Warning: Cheesecake contains dairy.");
-						return;
-					}
-
-					// Gets the topping/amount, stores as variables
-					const amount = $("#amount").val();
-					const topping = $("input[name='choice']:checked").val();
-
-					// Replaces form with all post-order information
-					$("form").replaceWith(`
-						<h2>Thank you! Your order has been placed</h2>
-						<p><strong>Quantity: </strong>${amount}</p>
-						<p><strong>Topping: </strong>${topping}</p>
-						<p><strong>Instructions: </strong>${instructions}</p>
-					`);
-
-				});
-
-				// Handles the month click, sets current month to clicked
-				$(".month_select li").click(function() {
-					const month = $(this).text();
-					$(".month_current").text(month);
-				});
-
-
-			});
-
-		</script>
-
 
 		<!-- Title/CSS sheet -->
 		<title>Homework 1</title>
@@ -60,6 +19,9 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	</head>
 
 	<body>
+		<!-- Links the ordering form to javascript file -->
+
+		<script src="javascripts/main.js"></script>
 
 		<h1>Cheesecake Order Form</h1>
 		
